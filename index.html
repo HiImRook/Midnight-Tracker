@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Midnight Tracker</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <div id="header-left">
+        <h1>Midnight Tracker</h1>
+        <p id="subtitle">Cardano ↔ Midnight boundary analysis</p>
+      </div>
+      <div id="header-right">
+        <span id="status-indicator" class="status-dot inactive" title="inactive"></span>
+        <button id="btn-start">Start</button>
+        <button id="btn-stop">Stop</button>
+      </div>
+    </header>
+
+    <section id="stats">
+      <div class="stat-card">
+        <span class="stat-label">Cardano Addresses</span>
+        <span class="stat-value" id="cardano-count">0</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Midnight Addresses</span>
+        <span class="stat-value" id="midnight-count">0</span>
+      </div>
+      <div class="stat-card high">
+        <span class="stat-label">High Confidence</span>
+        <span class="stat-value" id="high-count">0</span>
+      </div>
+      <div class="stat-card medium">
+        <span class="stat-label">Medium Confidence</span>
+        <span class="stat-value" id="medium-count">0</span>
+      </div>
+    </section>
+
+    <section id="chart-section">
+      <h2>Correlation Map</h2>
+      <canvas id="correlation-chart"></canvas>
+    </section>
+
+    <section id="table-section">
+      <h2>Correlation Table</h2>
+      <table id="correlation-table">
+        <thead>
+          <tr>
+            <th>Cardano Address</th>
+            <th>Midnight Address</th>
+            <th>Score</th>
+            <th>Label</th>
+            <th>Vectors</th>
+          </tr>
+        </thead>
+        <tbody id="correlation-body"></tbody>
+      </table>
+    </section>
+
+    <section id="log-section">
+      <h2>Live Feed</h2>
+      <div id="log-feed"></div>
+    </section>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

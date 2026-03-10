@@ -1,0 +1,41 @@
+const POLICY_ID = '0691b2fecca1ac4f53cb6dfb00b7013e561d1f34403b957cbb5af1fa4e49474854'
+
+const KOIOS_URL = 'https://api.koios.rest/api/v1'
+const MIDNIGHT_RPC_WS = 'wss://rpc.testnet-02.midnight.network'
+const BRIDGE_SCRIPT_HASH = null
+
+const VECTOR_WEIGHTS = {
+  registrationLink: 0.80,
+  timingMatch: 0.25,
+  amountMatch: 0.30,
+  patternMatch: 0.20
+}
+
+const CONFIDENCE_HIGH = 0.70
+const CONFIDENCE_MEDIUM = 0.40
+const CONFIDENCE_LOW = 0.10
+
+const DUST_GROWTH_RATE = 0.05
+const DUST_CAP_FACTOR = 100
+const DUST_DECAY_RATE = 0.01
+
+const TIMING_WINDOW_MS = 24 * 60 * 60 * 1000
+const CARDANO_POLL_INTERVAL = 30 * 1000
+const MIDNIGHT_WS_RECONNECT_DELAY = 5 * 1000
+
+export {
+  POLICY_ID,
+  KOIOS_URL,
+  MIDNIGHT_RPC_WS,
+  BRIDGE_SCRIPT_HASH,
+  VECTOR_WEIGHTS,
+  CONFIDENCE_HIGH,
+  CONFIDENCE_MEDIUM,
+  CONFIDENCE_LOW,
+  DUST_GROWTH_RATE,
+  DUST_CAP_FACTOR,
+  DUST_DECAY_RATE,
+  TIMING_WINDOW_MS,
+  CARDANO_POLL_INTERVAL,
+  MIDNIGHT_WS_RECONNECT_DELAY
+}
