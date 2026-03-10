@@ -8,11 +8,16 @@ import { registerMidnightEvent } from './correlator.js'
 let socket = null
 let reconnectTimer = null
 let active = false
+let reconnectAttempts = 0
+
+const MAX_RECONNECT_ATTEMPTS = 5
 
 function connect() {
   socket = new WebSocket(MIDNIGHT_RPC_WS)
 
   socket.onopen = () => {
+    reconnectAttempts = 0
+
     socket.send(JSON.stringify({
       jsonrpc: '2.0',
       id: 1,
@@ -42,8 +47,9 @@ function connect() {
   }
 
   socket.onclose = () => {
-    if (active) {
-      reconnectTimer = setTimeout(connect, MIDNIGHT_WS_RECONNECT_DELAY)
+    if (active && reconnectAttempts < MAX_RECONNECT_ATTEMPTS) {
+      reconnectAttempts++
+      reconnectTimer = setTimeout(connect, MIDNIGHT_WS_RECONNECT_DELAY * reconnectAttempts)
     }
   }
 }
@@ -118,6 +124,7 @@ function startMidnightWatcher() {
 
 function stopMidnightWatcher() {
   active = false
+  reconnectAttempts = 0
   if (reconnectTimer) {
     clearTimeout(reconnectTimer)
     reconnectTimer = null

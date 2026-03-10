@@ -17,7 +17,11 @@ let pollTimer = null
 async function fetchPolicyTransactions() {
   try {
     const response = await fetch(`${KOIOS_URL}/asset_txs?_asset_policy=${POLICY_ID}&_after_block_height=0`, {
-      headers: { 'Accept': 'application/json' }
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
     })
 
     if (!response.ok) return
@@ -38,7 +42,10 @@ async function processTx(txHash) {
   try {
     const response = await fetch(`${KOIOS_URL}/tx_info`, {
       method: 'POST',
-      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({ _tx_hashes: [txHash] })
     })
 
@@ -57,9 +64,7 @@ async function processTx(txHash) {
 
     const nightAsset = nightOutput.asset_list.find(asset => asset.policy_id === POLICY_ID)
     const nightAmount = parseInt(nightAsset?.quantity || '0')
-
     const isBridgeTx = BRIDGE_SCRIPT_HASH && nightOutput.payment_addr?.bech32 === BRIDGE_SCRIPT_HASH
-
     const registrationLink = extractRegistrationLink(tx)
 
     if (registrationLink) {

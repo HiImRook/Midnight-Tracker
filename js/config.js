@@ -1,6 +1,6 @@
 const POLICY_ID = '0691b2fecca1ac4f53cb6dfb00b7013e561d1f34403b957cbb5af1fa4e49474854'
 
-const KOIOS_URL = 'https://api.koios.rest/api/v1'
+const KOIOS_URL = 'https://api.koios.rest/api/v1/koios'
 const MIDNIGHT_RPC_WS = 'wss://rpc.testnet-02.midnight.network'
 const BRIDGE_SCRIPT_HASH = null
 
