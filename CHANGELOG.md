@@ -8,7 +8,7 @@
 ## [v0.1.0] - 2026-03-09
 ### Added
 - Initial release
-- Live client-side dashboard — no server, no database, fully in-memory
+- Live client-side dashboard — no server or databases, fully in-memory
 - Cardano NIGHT policy ID watcher via Koios REST
 - Midnight testnet-02 WebSocket connection via Substrate RPC
 - Four-vector correlation engine: registration link, timing delta, amount match, pattern fingerprint
