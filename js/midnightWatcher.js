@@ -1,6 +1,6 @@
 import {
-  MIDNIGHT_RPC_WS,
-  MIDNIGHT_WS_RECONNECT_DELAY
+  MIDNIGHT_WS_RECONNECT_DELAY,
+  MAX_RECONNECT_ATTEMPTS
 } from './config.js'
 
 import { registerMidnightEvent } from './correlator.js'
@@ -9,11 +9,16 @@ let socket = null
 let reconnectTimer = null
 let active = false
 let reconnectAttempts = 0
+let midnightRpcUrl = null
 
-const MAX_RECONNECT_ATTEMPTS = 5
+function setMidnightRpcUrl(url) {
+  midnightRpcUrl = url
+}
 
 function connect() {
-  socket = new WebSocket(MIDNIGHT_RPC_WS)
+  if (!midnightRpcUrl) return
+
+  socket = new WebSocket(midnightRpcUrl)
 
   socket.onopen = () => {
     reconnectAttempts = 0
@@ -55,10 +60,9 @@ function connect() {
 }
 
 function handleRpcMessage(data) {
-  if (!data.method && !data.params) return
+  if (!data.method || !data.params) return
 
   const payload = data.params?.result
-
   if (!payload) return
 
   if (data.method === 'state_storage') {
@@ -78,7 +82,6 @@ function processStorageChange(payload) {
     if (!value) continue
 
     const isDustBurn = key.includes('dust') || key.includes('burn') || key.includes('shield')
-
     if (!isDustBurn) continue
 
     const midnightAddress = extractMidnightAddress(key)
@@ -111,13 +114,14 @@ function extractDustAmount(storageValue) {
     const hex = storageValue.replace('0x', '')
     const bytes = new Uint8Array(hex.match(/.{1,2}/g).map(b => parseInt(b, 16)))
     const view = new DataView(bytes.buffer)
-    return view.getBigUint64(0, true)
+    return Number(view.getBigUint64(0, true))
   } catch {
     return 0
   }
 }
 
-function startMidnightWatcher() {
+function startMidnightWatcher(rpcUrl) {
+  midnightRpcUrl = rpcUrl
   active = true
   connect()
 }
@@ -135,4 +139,4 @@ function stopMidnightWatcher() {
   }
 }
 
-export { startMidnightWatcher, stopMidnightWatcher }
+export { startMidnightWatcher, stopMidnightWatcher, setMidnightRpcUrl }

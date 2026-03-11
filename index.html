@@ -16,10 +16,26 @@
       </div>
       <div id="header-right">
         <span id="status-indicator" class="status-dot inactive" title="inactive"></span>
-        <button id="btn-start">Start</button>
-        <button id="btn-stop">Stop</button>
       </div>
     </header>
+
+    <section id="connect-panel">
+      <div class="connect-row">
+        <div class="input-group">
+          <label for="blockfrost-key">Blockfrost Project ID</label>
+          <input type="password" id="blockfrost-key" placeholder="mainnetXXXXXXXXXXXXXXXX" autocomplete="off" spellcheck="false" />
+        </div>
+        <div class="input-group">
+          <label for="midnight-rpc">Midnight RPC (optional)</label>
+          <input type="text" id="midnight-rpc" placeholder="wss://rpc.testnet-02.midnight.network" autocomplete="off" spellcheck="false" />
+        </div>
+        <div class="connect-actions">
+          <button id="btn-connect">Connect</button>
+          <button id="btn-stop">Stop</button>
+        </div>
+      </div>
+      <p class="connect-note">Key is held in memory only. Never stored. Get a free key at <a href="https://blockfrost.io" target="_blank" rel="noopener">blockfrost.io</a></p>
+    </section>
 
     <section id="stats">
       <div class="stat-card">

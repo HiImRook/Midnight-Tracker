@@ -107,7 +107,7 @@ function scoreAmountMatch(cardanoProfile, midnightProfile) {
     return 0
   }
 
-  const totalBurned = midnightProfile.dustBurns.reduce((sum, burn) => sum + burn.dustAmount, 0)
+  const totalBurned = midnightProfile.dustBurns.reduce((sum, burn) => sum + Number(burn.dustAmount), 0)
   const elapsedMs = midnightProfile.lastSeen - (cardanoProfile.registrationTimestamp || cardanoProfile.firstSeen)
   const expectedDust = calculateExpectedDust(cardanoProfile.nightAmount, elapsedMs)
 

@@ -50,12 +50,6 @@ h1 {
   margin-top: 4px;
 }
 
-#header-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
 .status-dot {
   width: 10px;
   height: 10px;
@@ -66,11 +60,73 @@ h1 {
 .status-dot.active { background: var(--low); box-shadow: 0 0 6px var(--low); }
 .status-dot.inactive { background: var(--muted); }
 
+#connect-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.connect-row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.input-group label {
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.input-group input {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 13px;
+  padding: 8px 10px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input-group input:focus { border-color: var(--accent); }
+
+.connect-actions {
+  display: flex;
+  gap: 8px;
+  padding-bottom: 1px;
+}
+
+.connect-note {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.connect-note a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.connect-note a:hover { text-decoration: underline; }
+
 button {
   background: var(--surface);
   color: var(--text);
   border: 1px solid var(--border);
-  padding: 6px 16px;
+  padding: 8px 16px;
   font-family: inherit;
   font-size: 13px;
   cursor: pointer;
@@ -175,4 +231,5 @@ td.addr { color: var(--accent); }
 @media (max-width: 768px) {
   #stats { grid-template-columns: repeat(2, 1fr); }
   td.vectors { display: none; }
+  .connect-row { flex-direction: column; }
 }

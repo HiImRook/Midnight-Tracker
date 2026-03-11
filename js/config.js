@@ -1,7 +1,7 @@
 const POLICY_ID = '0691b2fecca1ac4f53cb6dfb00b7013e561d1f34403b957cbb5af1fa4e49474854'
 
-const KOIOS_URL = 'https://api.koios.rest/api/v1/koios'
-const MIDNIGHT_RPC_WS = 'wss://rpc.testnet-02.midnight.network'
+const BLOCKFROST_URL = 'https://cardano-mainnet.blockfrost.io/api/v0'
+const MIDNIGHT_RPC_WS_DEFAULT = 'wss://rpc.testnet-02.midnight.network'
 const BRIDGE_SCRIPT_HASH = null
 
 const VECTOR_WEIGHTS = {
@@ -22,11 +22,12 @@ const DUST_DECAY_RATE = 0.01
 const TIMING_WINDOW_MS = 24 * 60 * 60 * 1000
 const CARDANO_POLL_INTERVAL = 30 * 1000
 const MIDNIGHT_WS_RECONNECT_DELAY = 5 * 1000
+const MAX_RECONNECT_ATTEMPTS = 5
 
 export {
   POLICY_ID,
-  KOIOS_URL,
-  MIDNIGHT_RPC_WS,
+  BLOCKFROST_URL,
+  MIDNIGHT_RPC_WS_DEFAULT,
   BRIDGE_SCRIPT_HASH,
   VECTOR_WEIGHTS,
   CONFIDENCE_HIGH,
@@ -37,5 +38,6 @@ export {
   DUST_DECAY_RATE,
   TIMING_WINDOW_MS,
   CARDANO_POLL_INTERVAL,
-  MIDNIGHT_WS_RECONNECT_DELAY
+  MIDNIGHT_WS_RECONNECT_DELAY,
+  MAX_RECONNECT_ATTEMPTS
 }
