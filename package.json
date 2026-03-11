@@ -1,0 +1,11 @@
+{
+  "name": "midnight-tracker",
+  "version": "0.1.2",
+  "description": "Cardano/Midnight boundary correlation and pattern analysis tool",
+  "homepage": "https://hiimrook.github.io/Midnight-Tracker",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HiImRook/Midnight-Tracker.git"
+  },
+  "license": "MIT"
+}

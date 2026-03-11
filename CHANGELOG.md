@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [v0.1.2] - 2026-03-11
+### Changed
+- Switched Cardano data source from Koios to Blockfrost to resolve CORS blocking on GitHub Pages
+- Blockfrost key and Midnight RPC entered in UI — never stored in files or committed to repo
+- Key and RPC persist in sessionStorage across refresh, cleared on tab close or manual stop
+
+### Fixed
+- BigInt/Number type mismatch in DUST amount calculations
+- registerCardanoEvent argument count mismatch
+
 ## [v0.1.1] - 2026-03-10
 ### Fixed
 - Capped Midnight WebSocket reconnect attempts to prevent endpoint hammering on unavailable testnet
