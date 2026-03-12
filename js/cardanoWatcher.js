@@ -31,7 +31,7 @@ async function fetchPolicyTransactions() {
 
   try {
     const response = await fetch(
-      `${BLOCKFROST_URL}/assets/policy/${POLICY_ID}/transactions?count=100&order=desc`,
+      `${BLOCKFROST_URL}/assets/policy/${POLICY_ID}4e49474854/transactions?count=100&order=desc`,
       { headers: blockfrostHeaders() }
     )
 
